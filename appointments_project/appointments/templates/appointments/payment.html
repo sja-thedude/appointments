@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <h1>Complete Payment for Appointment</h1>
+    <p>Appointment with {{ appointment.provider_name }} at {{ appointment.appointment_time }}</p>
+
+    <button id="payButton">Pay $50</button>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        const stripe = Stripe("{{ stripe_publishable_key }}");
+
+        document.getElementById("payButton").addEventListener("click", function() {
+            stripe.confirmCardPayment("{{ client_secret }}", {
+                payment_method: {
+                    card: {token: "tok_visa"},
+                }
+            }).then(function(result) {
+                if (result.error) {
+                    alert(result.error.message);
+                } else {
+                    alert("Payment successful!");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
