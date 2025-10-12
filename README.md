@@ -3,6 +3,11 @@
 ## Description
 This is a simple Django project that allows users to book an appointment and make a mock payment using Stripe test keys.
 
+## Screenshots
+
+![](media/createappointment.png)
+![](media/stripepayment.png)
+
 ## Demo
 
 [Demo Video](https://drive.google.com/file/d/1vwCXofD4w3wXY3tbqUS2j0kGKrmUzXBg/view?usp=sharing)
